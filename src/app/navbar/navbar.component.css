@@ -1,0 +1,10 @@
+.bg-deep-blue {
+    background-color: #152b8e
+}
+
+.bd-navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1071;
+}

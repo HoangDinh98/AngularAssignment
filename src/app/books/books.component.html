@@ -1,0 +1,45 @@
+<!-- <li *ngFor="let star of stars">
+  <a routerLink="/detail/{{star.id}}">
+    <span class="badge">{{star.id}}</span> {{star.name}}
+  </a>
+  <button class="delete" title="delete star" (click)="delete(star)">x</button>
+</li> -->
+
+<div class="container">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Content</th>
+        <th scope="col">Craeted At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <th scope="row">{{book.id}}</th>
+        <td>
+          <a routerLink="/detail/{{book.id}}">
+            {{book.name}}
+          </a>
+        </td>
+        <td>{{book.price}}</td>
+        <td>{{book.content}}</td>
+        <td>
+          {{book.createdAt}}
+        </td>
+        <td class="cell">
+          <span class="button-icon">
+            <button title="Edit">
+              <i class="far fa-edit"></i>
+            </button>
+            <button title="Delete" class="btn-delete">
+              <i class="fas fa-trash"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

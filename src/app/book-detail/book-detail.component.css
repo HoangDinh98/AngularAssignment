@@ -1,0 +1,12 @@
+.edit-form {
+    text-align: center;
+}
+
+.edit-form-content {
+    text-align: left;
+    margin: 20px auto;
+}
+
+.invalid-feedback {
+    display: block;
+}
