@@ -14,6 +14,7 @@ import { BooksComponent } from './books/books.component';
 import { BookService } from './book.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookCreateComponent } from './book-create/book-create.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     MessagesComponent,
     BooksComponent,
     BookDetailComponent,
-    TruncatePipe
+    BookCreateComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,

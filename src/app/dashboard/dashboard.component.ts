@@ -21,4 +21,9 @@ export class DashboardComponent implements OnInit {
     this.bookService.getBooks().subscribe(books => this.books = books);
   }
 
+  delete(book: Book): void {
+    this.books = this.books.filter(b => b !== book);
+    this.bookService.deleteBook(book).subscribe();
+  }
+
 }

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './books/books.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import { BookDetailComponent }  from './book-detail/book-detail.component';
+import { BookCreateComponent }  from './book-create/book-create.component';
+
 
 // @NgModule({
 //   imports: [
@@ -17,7 +19,7 @@ const routes: Routes = [
   { path: 'books', component: BooksComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'create', component: BookDetailComponent },  
+  { path: 'create', component: BookCreateComponent },  
   { path: 'edit/:id', component: BookDetailComponent },
 ];
 
