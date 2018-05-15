@@ -11,7 +11,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable( )
+@Injectable()
 
 export class BookService {
 
@@ -31,8 +31,8 @@ export class BookService {
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl)
       .pipe(
-      tap(book => this.log(`fetched books`)),
-      catchError(this.handleError('getBooks', []))
+        tap(book => this.log(`fetched books`)),
+        catchError(this.handleError('getBooks', []))
       );
   }
 
@@ -97,7 +97,7 @@ export class BookService {
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

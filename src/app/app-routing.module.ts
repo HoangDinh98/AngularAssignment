@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'books', component: BooksComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'create', component: BookDetailComponent },  
   { path: 'edit/:id', component: BookDetailComponent },
 ];
 

@@ -49,3 +49,8 @@ span.button-icon button.btn-delete {
     background-color: #fb4949;
     margin-left: 10px;
 }
+
+.btn-create-box {
+    margin-bottom: 10px;
+    color: #FFFFFF !important;
+}

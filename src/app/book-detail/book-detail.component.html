@@ -1,10 +1,11 @@
 <div class="edit-form">
   <div *ngIf="book" class="edit-form-content col-md-8">
     <!-- <h2>Edit book: {{ book.name | uppercase }}</h2> -->
-    <h2>EDIT BOOK</h2>
+    <h2 *ngIf="book.id">EDIT BOOK</h2>
+    <h2 *ngIf="!book.id">CREATE BOOK</h2>
 
 
-    <div class="form-group">
+    <div *ngIf="book.id" class="form-group">
       <label>Book ID:
         <b>{{book.id}}</b>
       </label>
