@@ -9,4 +9,10 @@
 
 .invalid-feedback {
     display: block;
+    margin-top: 0;
+}
+
+.textarea-alt {
+    position: sticky !important;
+    height: 200px;
 }

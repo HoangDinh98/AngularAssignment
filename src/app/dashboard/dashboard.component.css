@@ -54,3 +54,8 @@ span.button-icon button.btn-delete {
     margin-bottom: 10px;
     color: #FFFFFF !important;
 }
+
+ul.pagination {
+    width: fit-content !important;
+    margin: 10px auto !important;
+}

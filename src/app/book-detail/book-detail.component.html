@@ -32,8 +32,9 @@
 
     <div class="form-group ">
       <label for="content ">Content:</label>
-      <input type="text " class="form-control " id="content " name="content " required minlength="4 " forbiddenName="bob" [(ngModel)]="book.content "
+      <textarea type="text" class="form-control textarea-alt" id="content " name="content " required minlength="4 " forbiddenName="bob" [(ngModel)]="book.content "
         #content="ngModel" [ngClass]="{'is-invalid': content.invalid }">
+      </textarea>
       <div *ngIf="content.invalid && (content.dirty || content.touched) " class="invalid-feedback ">
         <div *ngIf="content.errors.required "> Book content is required. </div>
         <div *ngIf="content.errors.minlength "> Book content must be at least 4 characters long. </div>

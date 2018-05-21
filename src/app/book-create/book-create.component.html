@@ -28,7 +28,7 @@
 
     <div class="form-group ">
       <label for="content ">Content:</label>
-      <textarea class="form-control" id="content" name="content" required minlength="4" forbiddenName="bob" [(ngModel)]="bookContent"
+      <textarea class="form-control textarea-alt" id="content" name="content" required minlength="4" forbiddenName="bob" [(ngModel)]="bookContent"
         #content="ngModel" [ngClass]="{'is-invalid': content.invalid && (content.dirty || content.touched) }">
       </textarea>
       <div *ngIf="content.invalid && (content.dirty || content.touched) " class="invalid-feedback ">
@@ -38,13 +38,14 @@
       </div>
     </div>
 
-    <button class="btn btn-success"
-      (click)="add(name.value, price.value, content.value)" [disabled]="name.invalid || price.invalid || content.invalid">
-      <i class="fas fa-save"></i> Save
-    </button>
+    <div class="form-group ">
+      <button class="btn btn-success" (click)="add(name.value, price.value, content.value)" [disabled]="name.invalid || price.invalid || content.invalid">
+        <i class="fas fa-save"></i> Save
+      </button>
 
-    <button class="btn btn-danger">
-      <i class="fas fa-reply"></i> Back
-    </button>
+      <button (click)="goBack()" class="btn btn-danger">
+        <i class="fas fa-reply"></i> Back
+      </button>
+    </div>
   </div>
 </div>

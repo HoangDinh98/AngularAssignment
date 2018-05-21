@@ -10,3 +10,8 @@
 .invalid-feedback {
     display: block;
 }
+
+.textarea-alt {
+    position: sticky !important;
+    height: 200px;
+}

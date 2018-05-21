@@ -28,8 +28,18 @@ export class BookService {
   // }
 
   /** GET heroes from the server */
-  getBooks(): Observable<Book[]> {
+  getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl)
+      .pipe(
+        tap(book => this.log(`fetched books`)),
+        catchError(this.handleError('getBooks', []))
+      );
+  }
+
+  getBooks(page: number, itemPerpage: number): Observable<Book[]> {
+    const url = `${this.booksUrl}?p=${page}&l=${itemPerpage}`;
+    console.log(url);
+    return this.http.get<Book[]>(url)
       .pipe(
         tap(book => this.log(`fetched books`)),
         catchError(this.handleError('getBooks', []))
