@@ -17,6 +17,13 @@ import { BookService } from './book.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
+import { LoginComponent } from './login/login.component';
+
+// Service 
+import { LoginService } from './service/login.service';
+
+// Guard
+import { CheckLoginGuard } from './guards/check-login.guard';
 
 
 @NgModule({
@@ -28,6 +35,7 @@ import { BookCreateComponent } from './book-create/book-create.component';
     BooksComponent,
     BookDetailComponent,
     BookCreateComponent,
+    LoginComponent,
     TruncatePipe,
   ],
   imports: [
@@ -39,7 +47,9 @@ import { BookCreateComponent } from './book-create/book-create.component';
   ],
   providers: [
     MessageService,
-    BookService
+    BookService,
+    LoginService,
+    CheckLoginGuard
   ],
   bootstrap: [AppComponent]
 })

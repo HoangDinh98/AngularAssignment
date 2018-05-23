@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+a:hover {
+    cursor: pointer !important;
+}
+
+.edit-form {
+    text-align: center;
+}
+
+.edit-form-content {
+    text-align: left;
+    margin: 20px auto;
+}
+
+.invalid-feedback {
+    display: block;
+    margin-top: 0;
+}
+
+.textarea-alt {
+    position: sticky !important;
+    height: 200px;
+}

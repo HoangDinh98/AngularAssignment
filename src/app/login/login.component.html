@@ -1,0 +1,32 @@
+<form class="edit-form" #form="ngForm" (ngSubmit)="CheckLogin(form.value)">
+    <div class="edit-form-content col-md-8">
+        <!-- <h2>Edit book: {{ book.name | uppercase }}</h2> -->
+        <h2>Login</h2>
+
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="emailUser" #email="ngModel" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched) }">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                <div *ngIf="email.errors.required"> Name is required. </div>
+                <div *ngIf="email.errors.email"> This must be Email </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="passwordUser" #password="ngModel"
+                [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }">
+            <div *ngIf=" password.invalid && (password.dirty || password.touched) " class="invalid-feedback ">
+                <div *ngIf="password.errors.required "> Price is required. </div>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-user"></i> Login
+            </button>
+        </div>
+    </div>
+</form>
