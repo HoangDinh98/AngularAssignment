@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 
 import { BookService } from '../book.service';
 import { nextTick } from 'q';
-import { BookDirective } from '../book.directive';
+// import { BookDirective } from '../book.directive';
 import { EmptyBook } from './mock-book';
 
 @Component({
@@ -18,7 +18,7 @@ export class BookDetailComponent implements OnInit {
   @Input() book: Book;
   @Input() emptyBook: EmptyBook;
 
-  @ViewChild(BookDirective) bookHost: BookDirective;
+  // @ViewChild(BookDirective) bookHost: BookDirective;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,13 +29,7 @@ export class BookDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    if (id) {
       this.getBook();
-    } else {
-      // nextTick
-      this.createBook();
-    }
   }
 
   ngAfterViewChecked() {
@@ -43,15 +37,15 @@ export class BookDetailComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  createBook(): void {
-    let emptyBook = this.emptyBook;
+  // createBook(): void {
+  //   let emptyBook = this.emptyBook;
     
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(emptyBook.component);
+  //   let componentFactory = this.componentFactoryResolver.resolveComponentFactory(emptyBook.component);
 
-    let viewContainerRef = this.bookHost.viewContainerRef;
-    viewContainerRef.clear();
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-  }
+  //   let viewContainerRef = this.bookHost.viewContainerRef;
+  //   viewContainerRef.clear();
+  //   let componentRef = viewContainerRef.createComponent(componentFactory);
+  // }
 
   getBook(): void {
     const id = +this.route.snapshot.paramMap.get('id');
