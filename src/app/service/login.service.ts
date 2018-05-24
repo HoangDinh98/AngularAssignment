@@ -70,4 +70,8 @@ export class LoginService {
         this.loginConfirmedSource.next(_isLoggedIn);
     }
 
+    getEmail(): string {
+        return 'myemail@gmail.com';
+    }
+
 }

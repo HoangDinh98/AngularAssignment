@@ -9,11 +9,13 @@ import { LoginService } from '../service/login.service';
 export class LoginComponent {
 
     error = '';
-    constructor(private router: Router, 
+    constructor(private router: Router,
         private loginService: LoginService,
         private cdr: ChangeDetectorRef
     ) {
+    }
 
+    ngOnInit() {
     }
 
     ngAfterViewChecked() {
