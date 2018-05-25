@@ -10,10 +10,14 @@ import { Location } from '@angular/common';
 })
 export class BookCreateComponent implements OnInit {
 
+  public bookName: any;
+  public bookPrice: any;
+  public bookContent: any;
+
   constructor(
     private bookService: BookService,
-    private location: Location,    
-    private cdr: ChangeDetectorRef
+    private location: Location,
+    private cdr: ChangeDetectorRef,
   ) { }
 
   books: Book[] = [];
