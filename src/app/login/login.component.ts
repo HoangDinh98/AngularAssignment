@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
     selector: 'home-component',
@@ -10,11 +11,13 @@ export class LoginComponent {
 
     public emailUser: any;
     public passwordUser: any;
+    // public navbar: NavbarComponent;
 
     error = '';
     constructor(private router: Router,
         private loginService: LoginService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        public navbar: NavbarComponent,
     ) {
     }
 
@@ -28,10 +31,10 @@ export class LoginComponent {
 
     CheckLogin(value: any) {
         console.log(value);
-        if (this.loginService.login(value.email, value.password)) {
+        if (this.navbar.Login(value)) {
             // this.loginService.setLogin(true);
-            this.router.navigate(['/']);
-
+            // this.navrbar.getEmail();
+            this.router.navigate(['/dashboard']);
         } else {
             // login failed
             this.error = 'Email or password is incorrect';

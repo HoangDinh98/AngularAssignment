@@ -18,12 +18,16 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 // Service 
 import { LoginService } from './service/login.service';
+import { SignUpService } from './service/signup.service';
+
 
 // Guard
 import { CheckLoginGuard } from './guards/check-login.guard';
+
 
 
 @NgModule({
@@ -36,6 +40,7 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     BookDetailComponent,
     BookCreateComponent,
     LoginComponent,
+    SignupComponent,
     TruncatePipe,
   ],
   imports: [
@@ -49,6 +54,8 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     MessageService,
     BookService,
     LoginService,
+    SignUpService,
+    NavbarComponent,
     CheckLoginGuard
   ],
   bootstrap: [AppComponent]

@@ -10,7 +10,7 @@ import { count } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-  itemsPerPage = 3;
+  itemsPerPage = 5;
   totalItems = 100;
   page = 1;
   previousPage = 1;

@@ -20,7 +20,6 @@ export class BookService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService) {
-
   }
 
   // getStars(): Observable<Star[]> {
@@ -49,6 +48,8 @@ export class BookService {
   /** GET hero by id. Will 404 if id not found */
   getBook(id: number): Observable<Book> {
     const url = `${this.booksUrl}/${id}`;
+
+    // console.log(this.http.get<Book>(url));
 
     return this.http.get<Book>(url).pipe(
       tap(_ => this.log(`fetched book id=${id}`)),

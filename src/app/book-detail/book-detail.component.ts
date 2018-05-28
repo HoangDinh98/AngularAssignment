@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { BookService } from '../book.service';
-import { nextTick } from 'q';
+// import { nextTick } from 'q';
 // import { BookDirective } from '../book.directive';
 import { EmptyBook } from './mock-book';
 
@@ -29,7 +29,7 @@ export class BookDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-      this.getBook();
+    this.getBook();
   }
 
   ngAfterViewChecked() {
@@ -39,7 +39,7 @@ export class BookDetailComponent implements OnInit {
 
   // createBook(): void {
   //   let emptyBook = this.emptyBook;
-    
+
   //   let componentFactory = this.componentFactoryResolver.resolveComponentFactory(emptyBook.component);
 
   //   let viewContainerRef = this.bookHost.viewContainerRef;
@@ -49,8 +49,9 @@ export class BookDetailComponent implements OnInit {
 
   getBook(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.bookService.getBook(id)
-      .subscribe(book => this.book = book);
+    console.log(this.bookService.getBook(id)
+      .subscribe(book => this.book = book));
+    console.log(this.book);
   }
 
   goBack(): void {

@@ -17,11 +17,50 @@ export class NavbarComponent implements OnInit {
   ) { }
 
 
+  ngOnChanges() {
+    this.email = this.loginService.email;
+    console.log("FFF " + this.email);
+  }
+
   ngOnInit() {
     this.isLoggedin = this.loginService.isLogged();
-    this.email = this.loginService.getEmail();
+    this.email = this.loginService.email;
 
-    // console.log("FFF " + this.email);
+    console.log("OFFF " + this.email + " sss " + this.isLoggedin);
+  }
+
+  // ngDoCheck() {
+  //   this.email = this.loginService.email;
+  //   console.log("DOFFF " + this.email)
+  // }
+
+  // ngAfterContentInit() {
+  //   this.email = this.loginService.email;
+  // }
+
+  // ngAfterContentChecked() {
+  //   this.email = this.loginService.email;
+  // }
+
+  // ngAfterViewInit() {
+  //   this.email = this.loginService.email;
+  // }
+
+  // ngAfterViewChecked() {
+  //   this.email = this.loginService.email;
+  //   // console.log("FFF " + this.email);
+  // }
+
+
+  // getEmail() {
+  //   this.email = this.loginService.email;
+  // }
+
+  Login(value: any): boolean {
+    if (this.loginService.login(value.email, value.password))
+      return true;
+    else
+      return false;
   }
 
   Logout() {

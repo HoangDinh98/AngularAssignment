@@ -18,8 +18,9 @@
           <li class="nav-item dropdown">
             <div *ngIf="isLoggedin; then Logged else User"></div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" *ngIf='!isLoggedin' routerLink="/login" routerLinkActive="active">Login</a>
-              <a class="dropdown-item" *ngIf='isLoggedin' (click)="Logout()" routerLinkActive="active">Logout</a>
+              <a class="dropdown-item" *ngIf='!isLoggedin' routerLink="/login">Login</a>
+              <a class="dropdown-item" *ngIf='!isLoggedin' routerLink="/signup">Sing up</a>
+              <a class="dropdown-item" *ngIf='isLoggedin' (click)="Logout()">Logout</a>
               <!-- <div class="dropdown-divider"></div> -->
             </div>
 
