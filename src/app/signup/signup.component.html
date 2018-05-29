@@ -1,9 +1,10 @@
-<form class="edit-form" #form="ngForm" (ngSubmit)="doSignUP(form.value)">
+<form class="edit-form" #form="ngForm" (ngSubmit)="checkSignUP(form.value)">
   <div class="edit-form-content col-md-8">
     <!-- <h2>Edit book: {{ book.name | uppercase }}</h2> -->
     <h2>Sign Up</h2>
 
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <div *ngIf="(errors | json) != '{}' && errors.email" class="alert alert-danger">{{errors.email}}</div>
+    <div *ngIf="(errors | json) != '{}' && errors.repassword" class="alert alert-danger">{{errors.repassword}}</div>
 
     <div class="form-group">
       <label for="firstname">First Name:</label>
@@ -32,6 +33,10 @@
         <div *ngIf="email.errors.required"> Email is required. </div>
         <div *ngIf="!email.errors.required && email.errors.email || email.errors.pattern"> This must be Email </div>
       </div>
+
+      <!-- <div *ngIf="errors.email!=''" class="invalid-feedback">
+        {{errors.email}}
+      </div> -->
     </div>
 
     <div class="form-group">
@@ -46,7 +51,7 @@
 
     <div class="form-group">
       <label for="repassword">Re-Password:</label>
-      <input type="repassword" class="form-control" id="repassword" name="repassword" required [(ngModel)]="repassWordU"
+      <input type="password" class="form-control" id="repassword" name="repassword" required [(ngModel)]="repassWordU"
       #repassword="ngModel" [ngClass]="{'is-invalid': repassword.invalid && (repassword.dirty || repassword.touched) }">
       <div *ngIf=" repassword.invalid && (repassword.dirty || repassword.touched) " class="invalid-feedback ">
         <div *ngIf="repassword.errors.required "> Re-Password is required. </div>
@@ -54,7 +59,8 @@
     </div>
 
     <div class="form-group ">
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-success" 
+      [disabled]="firstname.invalid || lastname.invalid || email.invalid || password.invalid || repassword.invalid">
         <i class="fas fa-user"></i> Sign Up
       </button>
     </div>

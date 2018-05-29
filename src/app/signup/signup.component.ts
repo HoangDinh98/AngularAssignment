@@ -3,6 +3,8 @@ import { SignUpService } from '../service/signup.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
 import { empty } from 'rxjs/Observer';
+import { Subject } from 'rxjs';
+import { Errors } from '../errors';
 
 
 @Component({
@@ -11,36 +13,61 @@ import { empty } from 'rxjs/Observer';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  is_unique: any ;
-  error = '';
+  is_unique: any;
   public user: User;
+  is_exist;
+  data: any;
+  errors = new Errors;
 
   constructor(
     private signupService: SignUpService,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
-  // ngAfterContentInit() {
-  //   this.is_unique = this.signupService.checkUniquedEmail(data.email).subscribe(user => this.user = user);
-  //   console.log(this.is_unique.lenght);
-  // }
+  ngOnChanges() {
+    this.errors.email = '';
+    this.errors.repassword = '';
+  }
 
-  doSignUP(data: any) {
+  checkSignUP(data: User) {
     console.log(data);
-    // console.log(this.signupService.checkUniquedEmail(data.email));
-    this.user = this.signupService.checkUniquedEmail(data.email);
+    this.data = data;
+    this.errors.email = '';
+    this.errors.repassword = '';
 
-    console.log(this.user);
+    if (this.data.password != this.data.repassword) {
+      this.errors.repassword = 'Repassword and Password not match';
+      return false;
+    }
 
-    if (this.is_unique == 0 ) {
-      alert('OK');
-      // this.router.navigate(['/dashboard']);
-    } else {
-      // login failed
-      this.error = 'Email or password is incorrect';
+    delete this.data.repassword;
+
+    // console.log('Test 2 ' + JSON.stringify(this.data));
+
+    this.signupService.checkUniquedEmail(data.email)
+      .then(
+        res => { this.doSignUP(res.length) }
+      );
+  }
+
+  doSignUP(status) {
+    // console.log("A1 " + this.data);
+    // console.log("A2 " + status);
+
+    if (status == 0) {
+      this.signupService.addUser(this.data).subscribe();
+      this.errors.email = '';
+      // console.log("A2 " + this.is_exist);
+      alert('Your Account has been created. \nPlease Login for Next Action');
+      this.router.navigate(['/login']);
+    }
+    else {
+      this.errors.email = 'Email is Exist';
+      // this.is_exist = true;
+      // console.log("A3 " + this.is_exist);
     }
   }
 

@@ -70,6 +70,7 @@ export class BookService {
 
   /** POST: add a new hero to the server */
   addBook(book: Book): Observable<Book> {
+    console.log("In service " + book);
     return this.http.post<Book>(this.booksUrl, book, httpOptions).pipe(
       tap((star: Book) => this.log(`added book  id=${book.id}`)),
       catchError(this.handleError<Book>('addBook'))
