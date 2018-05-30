@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Subject } from 'rxjs/Subject';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 
 @Injectable()
 export class LoginService {
 
+    private usersUrl = 'https://5aebce23046d7b0014fb6e75.mockapi.io/users';
+
     public _isLoggedIn = false;
     public token: string;
     public email = '';
 
-    // tương tác giữa 2 component bới service
-    // Observable string sources
-    private loginConfirmedSource = new Subject<any>();
-    // Observable string streams
-    loginConfirmed$ = this.loginConfirmedSource.asObservable();
-
-    isLogged(): boolean {
-        return this._isLoggedIn;
-    }
-
-    setLogin(isLoggedIn: boolean) {
-        this._isLoggedIn = isLoggedIn;
-        this.loginChange(isLoggedIn);
-    }
-
-    constructor() {
+    constructor(
+        private http: HttpClient
+    ) {
         // set token if saved in local storage
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
@@ -36,6 +30,44 @@ export class LoginService {
         }
 
     }
+
+    // tương tác giữa 2 component bới service
+    // Observable string sources
+    private loginConfirmedSource = new Subject<any>();
+    // Observable string streams
+    loginConfirmed$ = this.loginConfirmedSource.asObservable();
+
+    checkAccount(email: String): any {
+        const url = `${this.usersUrl}/?search=${email}`;
+        console.log(url);
+
+        let promise = new Promise((resolve, reject) => {
+            this.http.get(url)
+                .toPromise()
+                .then(
+                    res => {
+                        resolve(res);
+                        // console.log("In service " + res);
+                    },
+                    msg => { // Error
+                        reject(msg);
+                    }
+                );;
+        });
+
+        return promise;
+    }
+
+    isLogged(): boolean {
+        return this._isLoggedIn;
+    }
+
+    setLogin(isLoggedIn: boolean) {
+        this._isLoggedIn = isLoggedIn;
+        this.loginChange(isLoggedIn);
+    }
+
+    
 
     login(email: string, password: string): boolean {
 

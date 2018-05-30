@@ -2,6 +2,8 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { Errors } from '../errors';
+
 
 @Component({
     selector: 'home-component',
@@ -11,6 +13,8 @@ export class LoginComponent {
 
     public emailUser: any;
     public passwordUser: any;
+    public errors = new Errors;
+    private userdata: any;
     // public navbar: NavbarComponent;
 
     error = '';
@@ -29,17 +33,41 @@ export class LoginComponent {
         this.cdr.detectChanges();
     }
 
-    CheckLogin(value: any) {
-        console.log(value);
-        if (this.navbar.Login(value)) {
-            // this.loginService.setLogin(true);
-            // this.navrbar.getEmail();
-            this.router.navigate(['/dashboard']);
-        } else {
-            // login failed
-            this.error = 'Email or password is incorrect';
-            this.loginService.loginChange(false);
+    CheckLogin(data: any) {
+        console.log(data);
+        this.userdata = data;
+
+        this.errors.email = '';
+        this.errors.password = '';
+
+        this.login(data);
+    }
+
+    login(data: any) {
+        this.loginService.checkAccount(data.email)
+            .then(
+                response => { this.doLogin(response, response.length) }
+            );
+    }
+
+    doLogin(user: any, is_exist) {
+
+        console.log(JSON.stringify(user));
+        console.log(is_exist);
+
+        if (is_exist == 0) {
+            this.errors.email = 'Email or Password is incorrect';
+            return false;
         }
 
+        if (this.userdata.password != user[0].password) {
+            this.errors.password = 'Password is incorrect';
+            return false;
+        }
+        localStorage.setItem('currentUser', JSON.stringify({ email: user[0].email, token: '123f' }));
+        this.loginService.setLogin(true);
+
+        alert('Login Successful!');
+        this.router.navigate(['/dashboard']);
     }
 }

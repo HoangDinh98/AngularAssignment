@@ -56,11 +56,14 @@ export class NavbarComponent implements OnInit {
   //   this.email = this.loginService.email;
   // }
 
-  Login(value: any): boolean {
-    if (this.loginService.login(value.email, value.password))
-      return true;
-    else
-      return false;
+  Login(value: any) {
+    if (this.loginService.login(value.email, value.password)) {
+      this.isLoggedin = true;
+      console.error('nav ' + this.isLoggedin);
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.isLoggedin = true;
+    }
   }
 
   Logout() {

@@ -1,4 +1,5 @@
 export class Errors {
-    email: string;    
+    email: string;  
+    password: string;  
     repassword: string;
 }
