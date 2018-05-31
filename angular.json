@@ -21,9 +21,12 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/confirm-form/notifier.style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/confirm-form/notifier.script.js"
+            ]
           },
           "configurations": {
             "production": {

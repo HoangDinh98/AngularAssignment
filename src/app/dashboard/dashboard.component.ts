@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { count } from 'rxjs/operators';
+// import * as confirmDelete from 'confirm.js';
+// import { confirmDelete } from './confirm'; 
+
+declare var confirmDelete: any;
+
+// declare var System: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +21,14 @@ export class DashboardComponent implements OnInit {
   page = 1;
   previousPage = 1;
 
+  status = false;
+
   books: Book[] = [];
   allbooks: Book[] = [];
 
-  constructor(private bookService: BookService) { }
+  constructor(
+    private bookService: BookService,
+  ) { }
 
   ngOnInit() {
     this.getAllBooks();
@@ -47,8 +57,30 @@ export class DashboardComponent implements OnInit {
   }
 
   delete(book: Book): void {
-    this.books = this.books.filter(b => b !== book);
-    this.bookService.deleteBook(book).subscribe();
+    // this.confirm.confirmDelete();
+    // let confirm = new confirmDelete();
+
+    // this.status = new confirmDelete();
+
+    // this.status = confirm.$.Notifier();
+
+    // System.import('./confirm.js')
+    // .then(xJS => {
+    //     xJS.confirmDelete();
+    // });
+
+    // console.log(this.status);
+
+    // if (this.status) {
+    //   this.books = this.books.filter(b => b !== book);
+    //   this.bookService.deleteBook(book).subscribe();
+    // }
+
+    if(confirm('Do you want to delete this book')) {
+      this.books = this.books.filter(b => b !== book);
+      this.bookService.deleteBook(book).subscribe();
+    }
+
   }
 
 }

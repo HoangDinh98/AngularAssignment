@@ -21,8 +21,9 @@
     <tr *ngFor="let book of books">
       <th scope="row">{{book.id}}</th>
       <td>
-        <a routerLink="/edit/{{book.id}}">
-          {{book.name}}
+        <a class="undecoration" routerLink="/edit/{{book.id}}">
+          <img src="{{book.image}}" width="70px">
+          <span style="margin-left: 15px">{{book.name}}</span>
         </a>
       </td>
       <td>{{book.price}}</td>
@@ -51,3 +52,5 @@
   [(page)]="page" [maxSize]="3" [rotate]="true" (pageChange)="loadPage($event)" [boundaryLinks]="true">
   </ngb-pagination>
 </div>
+
+<!-- <script src="./confirm.js"></script> -->

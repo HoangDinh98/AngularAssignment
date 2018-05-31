@@ -13,6 +13,7 @@ export class BookCreateComponent implements OnInit {
   public bookName: any;
   public bookPrice: any;
   public bookContent: any;
+  public image: string;
 
   constructor(
     private bookService: BookService,
@@ -35,13 +36,24 @@ export class BookCreateComponent implements OnInit {
     this.location.back();
   }
 
-  add(name: string, price: number, content: string): void {
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  getRandomArbitrary(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  add(name: string, price: number, content: string, image: string): void {
     name = name.trim();
     content = content.trim();
+    image = './assets/images/books/book' + this.getRandomArbitrary(1, 9) + '.jpg';
 
     if (!name) { return; }
 
-    this.bookService.addBook({ name, price, content } as Book)
+    this.bookService.addBook({ name, price, content, image } as Book)
       .subscribe(() => this.goBack());
   }
 

@@ -3,5 +3,6 @@ export class Book {
     name: string;
     price: number;
     content: string;
+    image: string;
     createdAt: string;
 }

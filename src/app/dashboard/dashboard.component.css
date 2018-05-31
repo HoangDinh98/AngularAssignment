@@ -59,3 +59,11 @@ ul.pagination {
     width: fit-content !important;
     margin: 10px auto !important;
 }
+
+.undecoration:hover {
+    text-decoration: none !important;
+}
+
+.undecoration:hover span {
+    text-decoration: underline;
+}
