@@ -27,6 +27,7 @@ import { SignUpService } from './service/signup.service';
 
 // Guard
 import { CheckLoginGuard } from './guards/check-login.guard';
+import { UiComponent } from './ui/ui.component';
 
 
 
@@ -42,6 +43,7 @@ import { CheckLoginGuard } from './guards/check-login.guard';
     LoginComponent,
     SignupComponent,
     TruncatePipe,
+    UiComponent,
   ],
   imports: [
     BrowserModule,
