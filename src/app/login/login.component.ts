@@ -68,6 +68,7 @@ export class LoginComponent {
         this.loginService.setLogin(true);
 
         alert('Login Successful!');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/admin']);
+        window.location.reload();
     }
 }

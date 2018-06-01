@@ -25,7 +25,6 @@
               "src/assets/confirm-form/notifier.style.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
               "./src/assets/ui/vendor/jquery/jquery-3.2.1.min.js",
               "./src/assets/ui/vendor/animsition/js/animsition.min.js",
               "./src/assets/ui/vendor/bootstrap/js/popper.js",
