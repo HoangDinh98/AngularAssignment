@@ -9,6 +9,8 @@ import { BookCreateComponent }  from './book-create/book-create.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UiComponent } from './ui/ui.component';
+import { UiBookDetailComponent } from './ui-book-detail/ui-book-detail.component';
+
 
 import { CheckLoginGuard } from './guards/check-login.guard';
 
@@ -21,14 +23,16 @@ import { CheckLoginGuard } from './guards/check-login.guard';
 // })
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'books', component: BooksComponent, canActivate: [CheckLoginGuard]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [CheckLoginGuard] },
+  { path: 'admin', component: DashboardComponent, canActivate: [CheckLoginGuard] },
   { path: 'create', component: BookCreateComponent, canActivate: [CheckLoginGuard] },  
   { path: 'edit/:id', component: BookDetailComponent, canActivate: [CheckLoginGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'ui', component: UiComponent },
+  { path: 'home', component: UiComponent },
+  { path: 'home/book/:id', component: UiBookDetailComponent },
+  { path: 'book/:id', component: UiBookDetailComponent },  
 ];
 
 @NgModule({

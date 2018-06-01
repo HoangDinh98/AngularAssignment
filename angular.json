@@ -25,7 +25,19 @@
               "src/assets/confirm-form/notifier.style.css"
             ],
             "scripts": [
-              "src/assets/confirm-form/notifier.script.js"
+              "./node_modules/jquery/dist/jquery.js",
+              "./src/assets/ui/vendor/jquery/jquery-3.2.1.min.js",
+              "./src/assets/ui/vendor/animsition/js/animsition.min.js",
+              "./src/assets/ui/vendor/bootstrap/js/popper.js",
+              "./src/assets/ui/vendor/bootstrap/js/bootstrap.js",
+              "./src/assets/ui/vendor/select2/select2.min.js",
+              "./src/assets/ui/vendor/slick/slick.min.js",
+              "./src/assets/ui/js/slick-custom.js",
+              "./src/assets/ui/vendor/countdowntime/countdowntime.js",
+              "./src/assets/ui/vendor/lightbox2/js/lightbox.min.js",
+              "./src/assets/ui/vendor/sweetalert/sweetalert.min.js",
+              "./src/assets/ui/js/main.js",
+              "./src/assets/confirm-form/notifier.script.js"              
             ]
           },
           "configurations": {

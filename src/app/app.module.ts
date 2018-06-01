@@ -28,6 +28,7 @@ import { SignUpService } from './service/signup.service';
 // Guard
 import { CheckLoginGuard } from './guards/check-login.guard';
 import { UiComponent } from './ui/ui.component';
+import { UiBookDetailComponent } from './ui-book-detail/ui-book-detail.component';
 
 
 
@@ -44,6 +45,7 @@ import { UiComponent } from './ui/ui.component';
     SignupComponent,
     TruncatePipe,
     UiComponent,
+    UiBookDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -49,7 +49,7 @@ export class BookService {
   getBook(id: number): Observable<Book> {
     const url = `${this.booksUrl}/${id}`;
 
-    // console.log(this.http.get<Book>(url));
+    console.log(url);
 
     return this.http.get<Book>(url).pipe(
       tap(_ => this.log(`fetched book id=${id}`)),

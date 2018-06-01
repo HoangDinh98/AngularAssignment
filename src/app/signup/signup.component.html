@@ -1,68 +1,68 @@
-<form class="edit-form" #form="ngForm" (ngSubmit)="checkSignUP(form.value)">
-  <div class="edit-form-content col-md-8">
-    <!-- <h2>Edit book: {{ book.name | uppercase }}</h2> -->
-    <h2>Sign Up</h2>
+<div class="container">
+  <form class="edit-form" #form="ngForm" (ngSubmit)="checkSignUP(form.value)">
+    <div class="edit-form-content col-md-8">
+      <!-- <h2>Edit book: {{ book.name | uppercase }}</h2> -->
+      <h2>Sign Up</h2>
 
-    <div *ngIf="(errors | json) != '{}' && errors.email" class="alert alert-danger">{{errors.email}}</div>
-    <div *ngIf="(errors | json) != '{}' && errors.repassword" class="alert alert-danger">{{errors.repassword}}</div>
+      <div *ngIf="(errors | json) != '{}' && errors.email" class="alert alert-danger">{{errors.email}}</div>
+      <div *ngIf="(errors | json) != '{}' && errors.repassword" class="alert alert-danger">{{errors.repassword}}</div>
 
-    <div class="form-group">
-      <label for="firstname">First Name:</label>
-      <input type="text" class="form-control" id="firstname" name="firstname" required [(ngModel)]="firstNameU"
-      #firstname="ngModel" [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }">
-      <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="invalid-feedback">
-        <div *ngIf="firstname.errors.required"> First Name is required. </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="lastname">Last Name:</label>
-      <input type="text" class="form-control" id="lastname" name="lastname" required [(ngModel)]="lastNameU"
-      #lastname="ngModel" [ngClass]="{'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched) }">
-      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="invalid-feedback">
-        <div *ngIf="lastname.errors.required"> Last Name is required. </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="email" email required [(ngModel)]="emailUser" 
-      #email="ngModel" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched) }"
-      pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" >
-      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
-        <div *ngIf="email.errors.required"> Email is required. </div>
-        <div *ngIf="!email.errors.required && email.errors.email || email.errors.pattern"> This must be Email </div>
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" required [(ngModel)]="firstNameU" #firstname="ngModel"
+          [ngClass]="{'is-invalid': firstname.invalid && (firstname.dirty || firstname.touched) }">
+        <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="invalid-feedback">
+          <div *ngIf="firstname.errors.required"> First Name is required. </div>
+        </div>
       </div>
 
-      <!-- <div *ngIf="errors.email!=''" class="invalid-feedback">
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" required [(ngModel)]="lastNameU" #lastname="ngModel"
+          [ngClass]="{'is-invalid': lastname.invalid && (lastname.dirty || lastname.touched) }">
+        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="invalid-feedback">
+          <div *ngIf="lastname.errors.required"> Last Name is required. </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" email required [(ngModel)]="emailUser" #email="ngModel"
+          [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched) }" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+          <div *ngIf="email.errors.required"> Email is required. </div>
+          <div *ngIf="!email.errors.required && email.errors.email || email.errors.pattern"> This must be Email </div>
+        </div>
+
+        <!-- <div *ngIf="errors.email!=''" class="invalid-feedback">
         {{errors.email}}
       </div> -->
-    </div>
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" name="password" minlength="8" required [(ngModel)]="passwordUser" #password="ngModel"
-        [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }">
-      <div *ngIf=" password.invalid && (password.dirty || password.touched) " class="invalid-feedback ">
-        <div *ngIf="password.errors.required "> Password is required. </div>
-        <div *ngIf="password.errors.minlength "> Password is at least 8 characters. </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" minlength="8" required [(ngModel)]="passwordUser"
+          #password="ngModel" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }">
+        <div *ngIf=" password.invalid && (password.dirty || password.touched) " class="invalid-feedback ">
+          <div *ngIf="password.errors.required "> Password is required. </div>
+          <div *ngIf="password.errors.minlength "> Password is at least 8 characters. </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="repassword">Re-Password:</label>
+        <input type="password" class="form-control" id="repassword" name="repassword" required [(ngModel)]="repassWordU" #repassword="ngModel"
+          [ngClass]="{'is-invalid': repassword.invalid && (repassword.dirty || repassword.touched) }">
+        <div *ngIf=" repassword.invalid && (repassword.dirty || repassword.touched) " class="invalid-feedback ">
+          <div *ngIf="repassword.errors.required "> Re-Password is required. </div>
+        </div>
+      </div>
+
+      <div class="form-group ">
+        <button type="submit" class="btn btn-success" [disabled]="firstname.invalid || lastname.invalid || email.invalid || password.invalid || repassword.invalid">
+          <i class="fas fa-user"></i> Sign Up
+        </button>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="repassword">Re-Password:</label>
-      <input type="password" class="form-control" id="repassword" name="repassword" required [(ngModel)]="repassWordU"
-      #repassword="ngModel" [ngClass]="{'is-invalid': repassword.invalid && (repassword.dirty || repassword.touched) }">
-      <div *ngIf=" repassword.invalid && (repassword.dirty || repassword.touched) " class="invalid-feedback ">
-        <div *ngIf="repassword.errors.required "> Re-Password is required. </div>
-      </div>
-    </div>
-
-    <div class="form-group ">
-      <button type="submit" class="btn btn-success" 
-      [disabled]="firstname.invalid || lastname.invalid || email.invalid || password.invalid || repassword.invalid">
-        <i class="fas fa-user"></i> Sign Up
-      </button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
